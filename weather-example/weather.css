@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin: 4px;
+    padding: 40px;
+}
+
+
+#weather {
+    background-color: green;
+    color: white;
+    border: black;
+
+}
+
+label {
+    font-weight: 700;
+    font-size: 24px;
+    color:violet;
+
+}
