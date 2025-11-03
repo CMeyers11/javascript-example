@@ -52,23 +52,28 @@ select.addEventListener("change", () => {
 
 
 // Defining a function here, and thus defining what the arguments are called within this function.
-// Even though "month" has not been defined anywhere else, that doesn't matter because we are not CALLING the function here, we are DEFINING the function
+// Even though "monthName" has not been defined anywhere else, that doesn't matter because we are not CALLING the function here, we are DEFINING the function
 // THUS, createCalendar(choice) above is calling the createCalendar function and using "choice" as the month argument. I AM DEFINING THE SYNTAX FOR THIS FUNCTION IN THE SCRIPT BELOW!!
 function createCalendar(monthName) {
-    // Conditional check to see if we have selected a valid input for the argument "month"
-    if (monthsData.find()) {
+    // Declaring a constant variable "entry"
+    // The "find" Method looks at the array "monthsData" one by one and defines the element (which itself is an array) as "row". 
+    // It then looks at the 0th element in the in the row array and checks whether it is strictly equal to monthName
+    // If this conditional returns false, the row method continues down the array
+    // If it reaches the end of the array without finding a true, then it returns false and entry will be declared as false
+    // If it finds a true, find will return the array "row" that yielded the true and entry will be declared as that row
+    const entry = monthsData.find(row => row[0] === monthName)
+    if (!entry) {
          "Invalid month";
        return;
     }   
     
-    // Searches the object daysInMonth for the value input to the argument "month" and returns the correspoding value
-    const days = daysInMonth[monthName];
+    const [name, days, order] = entry;
 
     // Clears any existing list items (<li>) from the <ul>
     // This ensures we don't append new items on top of old ones
     list.textContent = "";
     // Updates the h1 text to show the current month name
-    h1.textContent = month;
+    h1.textContent = `${order}. ${name}`;
 
     // Creates a for loop that iterates until i = days.
     for (let i=1; i <= days; i++) {
