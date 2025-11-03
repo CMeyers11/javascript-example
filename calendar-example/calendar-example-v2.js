@@ -57,17 +57,17 @@ select.addEventListener("change", () => {
 function createCalendar(monthName) {
     // Declaring a constant variable "entry"
     // The "find" Method looks at the array "monthsData" one by one and defines the element (which itself is an array) as "row". 
-    // It then looks at the 0th element in the in the row array and checks whether it is strictly equal to monthName
+    // It then looks at the 0th element in the in the row object and checks whether it is strictly equal to monthName
     // If this conditional returns false, the row method continues down the array
     // If it reaches the end of the array without finding a true, then it returns false and entry will be declared as false
-    // If it finds a true, find will return the array "row" that yielded the true and entry will be declared as that row
-    const entry = monthsData.find(row => row[0] === monthName)
+    // If it finds a true, find will return the object "row" that yielded the true and entry will be declared as that row
+    const entry = monthsData.find(row => row.name === monthName)
     if (!entry) {
          "Invalid month";
        return;
     }   
     
-    const [name, days, order] = entry;
+    const {name, days, order} = entry;
 
     // Clears any existing list items (<li>) from the <ul>
     // This ensures we don't append new items on top of old ones
