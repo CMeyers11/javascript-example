@@ -8,11 +8,26 @@
 <body>
     <script>
         // Javascript goes here!
-        console.log("Hello, World")
-        let a = 10
-        let example = (a+5)
-        a = 20
-        console.log(example)
+        function add7(number) {
+            return number + 7;
+        }
+
+        function multiply(a,b){
+            return a*b;
+        }
+
+        function capitalize(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }
+
+        function lastLetter(word2) {
+            return word2.charAt(word2.length -1);
+        }  
+
+        console.log(add7(10));
+        console.log(multiply(3,2));
+        console.log(capitalize("aBcD"));
+        console.log(lastLetter("abcd"));
     </script>
 </body>
 </html>
