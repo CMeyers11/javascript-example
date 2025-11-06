@@ -10,26 +10,45 @@
     <button id="cancel-reset">Cancel</button>
     <input id="user-input" type="text">
     <p id="output"></p>
+
     <script>
-        const userInput = document.querySelector("user-input")
-        const cancelResetButton = document.querySelector("cancel-reset")
-        const outputText = document.querySelector("output")
-        // add event listener for enter to the number input
-        
-        // on enter sumInput(userInput)
+        const userInput = document.querySelector("#user-input");
+        const cancelResetButton = document.querySelector("#cancel-reset");
+        const outputText = document.querySelector("#output");
+        let outputArray = [];
+        let previousSum = 0;
 
+        userInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                const value = Number(userInput.value);
+                if (!isNaN(value) && userInput.value.trim() !== "") {
+                    previousSum = sumInput(previousSum,value);
+                    outputArray.push(value);
+                    userInput.value = '';
+                    outputText.textContent = `Current sum is ${previousSum}.
+                                                All previous entries are ${outputArray}`;
+                    return previousSum;
+                } else {
+                outputText.textContent = `Error, value must be a number. 
+                                            Last sum was ${previousSum}.
+                                            All previous entries are ${outputArray}`;
+                return outputText;
+                }           
+            }   
+        })
 
+        cancelResetButton.addEventListener("click", () =>{
+            previousSum = 0;
+            outputArray = [];
+            outputText.value = "";
+            userInput.value = "";
+        })
 
 
         function sumInput(oldNumber, newNumber) {
             return oldNumber + newNumber;
         }
 
-                
-            // update number
-            // while number is a number
-                // arrayName.push(number)
-                // 
     </script>
 </body>
 </html>
