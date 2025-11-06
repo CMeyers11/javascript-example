@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id = "user-entry" type="text">
+    <button id="submit">Submit</button>
+    <p id="output"></p>
+    <script>
+        const outputText = document.querySelector("#output");
+        const inputArray = document.querySelector("#user-entry");
+        const submitButton = document.querySelector("#submit");
+
+        submitButton.addEventListener("click", () => {
+            const convertedInputArray = inputArray.value.split(",").map(Number);
+            outputText.textContent = getMaxSubSum(convertedInputArray);
+        })
+       
+        function getMaxSubSum(arr) {
+            let maxSum = 0;
+            for(let i=0; arr[i]>0;i++) {
+                maxSum = maxSum + arr[i];
+            }
+            return maxSum;
+        }
+    </script>
+</body>
+</html>
