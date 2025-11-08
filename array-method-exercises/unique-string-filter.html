@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique String Filter</title>
+</head>
+<body>
+    <script>
+
+        function unique(arr) {
+            let filteredArray = [];
+            for(let i = 0; i < arr.length; i++) {
+                let element = arr[i];
+                if (!filteredArray.includes(element)) {
+                    filteredArray.splice(-1,0,element);
+            }
+            }
+            return filteredArray
+        }
+
+        let strings = ["Hare", "Krishna", "Hare", "Krishna",
+            "Krishna", "Krishna", "Hare", "Hare", ":-O"];
+
+        alert( unique(strings) ); // Hare, Krishna, :-O
+    </script>
+</body>
+</html>
