@@ -17,36 +17,57 @@
 
 
     <script>
-      /*  const submitButton = document.querySelector("#submit");
-        const stringInput = document.querySelector("#array-input").value;
-        const boundInputOne = document.querySelector("#bound-one").value;
-        const boundInputTwo = document.querySelector("#bound-two").value;
-        const outputText = document.querySelector("#output-text");
+        const elements = {
+            submitButton: document.querySelector("#submit"),
+            input: document.querySelector("#array-input"),
+            boundOne: document.querySelector("#bound-one"),
+            boundTwo: document.querySelector("#bound-two"),
+            output: document.querySelector("#output-text"),
+        }
 
-        submitButton.addEventListener("click", () =>{
-            let arrayInput = stringInput
-                .split(",")
-                .map(item =>
-                    Number(item.trim()))
-                .filter(item =>
-                    !Number.isNaN(n));
+                /* 1) listen for click, then
+            2) make stringInput into an arrayInput variable
+                i) take value of stringInput
+                ii) split the string on the comma
+                iii) make any elements into numbers  -> this will return:
+                    a) numbers for strings that look like numbers (e.g., "5")
+                    b) NaN for strings that don't look like numbers (e.g., "five", "s", "thr33")
+                iv) filter out any NaN
+            3) Run the function to check if an element falls outside the bounds
+            4) Set outputText to the result 
+            */
         
-            if (arrayInput.length === 0 || Number.isNaN(boundInputOne) || Number.isNaN(boundInputTwo)) {
-                outputText.textContent = "Please enter a comma-separated list of numbers and two numeric bounds.";
+        elements.submitButton.addEventListener("click", () => {
+            const stringInput = elements.input.value;
+            const b1 = Number(elements.boundOne.value);
+            const b2 = Number(elements.boundTwo.value);
+            const arrayInput = stringToArray(stringInput);
+
+            if (arrayInput.length === 0 || Number.isNaN(b1) || Number.isNaN(b2)) {
+                elements.output.textContent = "Please enter a comma-separated list of numbers and two numeric bounds.";
                 return;
             }
 
-            filterRangeInPlace(arrayInput, boundInputOne, boundInputTwo);
+            filterRangeInPlace(arrayInput, b1, b2);
             
-            outputText.textContent = `${arrayInput.join(", ")}`;
+            elements.output.textContent= `${arrayInput.join(", ")}`;
             return;
-        })*/
+        })
     
         
-        const exArray = [4, 10, 11, 12, 13, 5]
-        b1 = 4
-        b2 = 7
-        filterRangeInPlace(exArray, 4, 7)
+        
+        
+         
+        function stringToArray(string) {
+            let array = string
+                    .split(",")
+                    .map(item =>
+                        Number(item.trim()))
+                    .filter(item =>
+                        !Number.isNaN(item));
+            return array;
+        }
+
         function filterRangeInPlace (arrayName, bound1, bound2) {
             let lowerBound;
             let upperBound;
@@ -67,7 +88,20 @@
             }
         }
 
-        alert(exArray)
+        //version 2 using filter 
+              
+       /* let exArray2 = [5, 10, 11, 12, 6];
+        const b1 = 4;
+        const b2 = 7;
+        exArray2 = filterRangeUsingFilter(exArray2,b1,b2);
+        alert(exArray2);
+        function filterRangeUsingFilter(arrayName,bound1,bound2) {
+            let upperBound = Math.max(bound1, bound2);
+            let lowerBound = Math.min(bound1, bound2);
+            return arrayName.filter(element => element >= lowerBound && element <= upperBound);
+        
+        }
+        */
     </script>
 </body>
 </html>
