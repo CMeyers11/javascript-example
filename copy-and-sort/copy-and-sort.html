@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy and Sort</title>
+</head>
+<body>
+    <script>
+        /* Doesn't work properly but I don't know why*/
+        let arr = ["HTML", "JavaScript", "a", "CSS"];
+        let numbs = [10, 3, 2, 5];
+        
+        function copySorted(inputArray) {
+            return inputArray.slice().sort();
+        }
+        
+        let sorted = copySorted(arr);
+        let sorted2 = copySorted(numbs);
+        
+        alert(typeof numbs[1]);
+
+        alert(numbs.sort());
+        alert(sorted2);
+        alert(sorted); // CSS, HTML, JavaScript
+        alert(arr); // HTML, JavaScript, CSS (no changes)
+    </script>
+</body>
+</html>
