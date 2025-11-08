@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Range "in Place"</title>
+</head>
+<body>
+    <label for="arrayInput">Array input</label>
+        <input type="text"  id="array-input">
+    <label for="bound-one">Bound 1</label>
+        <input type="number" id="bound-one">
+    <label for="bound-two">Bound 2</label>
+        <input type="number" id="bound-two">
+    <button id="submit">Submit Array</button>
+    <p id="output-text"></p>
+
+
+    <script>
+      /*  const submitButton = document.querySelector("#submit");
+        const stringInput = document.querySelector("#array-input").value;
+        const boundInputOne = document.querySelector("#bound-one").value;
+        const boundInputTwo = document.querySelector("#bound-two").value;
+        const outputText = document.querySelector("#output-text");
+
+        submitButton.addEventListener("click", () =>{
+            let arrayInput = stringInput
+                .split(",")
+                .map(item =>
+                    Number(item.trim()))
+                .filter(item =>
+                    !Number.isNaN(n));
+        
+            if (arrayInput.length === 0 || Number.isNaN(boundInputOne) || Number.isNaN(boundInputTwo)) {
+                outputText.textContent = "Please enter a comma-separated list of numbers and two numeric bounds.";
+                return;
+            }
+
+            filterRangeInPlace(arrayInput, boundInputOne, boundInputTwo);
+            
+            outputText.textContent = `${arrayInput.join(", ")}`;
+            return;
+        })*/
+    
+        
+        const exArray = [4, 10, 11, 12, 13, 5]
+        b1 = 4
+        b2 = 7
+        filterRangeInPlace(exArray, 4, 7)
+        function filterRangeInPlace (arrayName, bound1, bound2) {
+            let lowerBound;
+            let upperBound;
+            if (bound1 <=  bound2) {
+                lowerBound = bound1;
+                upperBound = bound2;
+            } else {
+                lowerBound = bound2;
+                upperBound = bound1;
+            }
+
+           for (let index = 0; index < arrayName.length; index++) {
+                let element = arrayName[index];
+                if (element < lowerBound || element > upperBound){
+                    arrayName.splice(index, 1);
+                    --index;
+                }
+            }
+        }
+
+        alert(exArray)
+    </script>
+</body>
+</html>
