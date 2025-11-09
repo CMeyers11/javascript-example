@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Keyed Object from Array</title>
+</head>
+
+<body>
+    <script>
+        let users = [
+            { id: 'john', name: "John Smith", age: 20 },
+            { id: 'ann', name: "Ann Smith", age: 24 },
+            { id: 'pete', name: "Pete Peterson", age: 31 },
+        ];
+
+         let exampleArray = [
+            ["a", "b", "c"],
+            ["d", "e", "f"],
+            ["g", "h", "j"]
+        ]            
+           
+
+
+        alert(exampleArray[0][2]);
+        // This creates an array of objects
+        // Map is a method that only creates arrays, not objects
+        // Thus, the below creates an array of objects of objects
+        /*  usersById = [
+                            { john: { id: 'john', name: 'John Smith', age: 20 } },
+                            { ann:  { id: 'ann',  name: 'Ann Smith',  age: 24 } },
+                            { pete: { id: 'pete', name: 'Pete Peterson', age: 31 } }
+                        ]   
+        */
+        // ex: usersById[0] = { john: { id: 'john', name: 'John Smith', age: 20 } }
+            // Returns the index 0 element (which is an object) of the array usersById
+        // ex: usersById[0].john = { id: 'john', name: 'John Smith', age: 20 }
+            // Returns the value corresponding to key named "john" in the object at the index 0 element of usersById
+        // ex: usersById[0].john.age = 20
+            // Returns the value corresponding to a key named "age" in the object at the key named "john" at the index 0 element of usersById
+
+        let usersById = users.map(element=> ({
+            [element.id]: element
+        }));
+
+
+        console.log(usersById);
+        console.log(usersById[0].john);
+
+
+
+
+
+
+
+
+       // let keys = users.map(element =>element.id);
+       // alert(keys);
+        /*
+        function groupById(arr, key) {
+            return arr.map(element => ({
+                key: element
+            }))
+
+        }
+
+        alert(users[0].id);
+        let usersById = groupById(users,keys);
+        alert(usersById);
+
+        /*
+        // after the call we should have:
+
+        usersById = {
+        john: {id: 'john', name: "John Smith", age: 20},
+        ann: {id: 'ann', name: "Ann Smith", age: 24},
+        pete: {id: 'pete', name: "Pete Peterson", age: 31},
+        }*/
+    </script>
+</body>
+
+</html>
