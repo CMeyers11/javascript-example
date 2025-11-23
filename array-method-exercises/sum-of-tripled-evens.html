@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Tripled Evens</title>
+</head>
+<body>
+    <script>
+        function sumOfTripledEvens(array) {
+            // takes an array
+            // filters for only evens, 
+            // passes a function *3 on the filtered set,
+            // sums and reduces the filtered set to return a single value
+            
+            return array
+                .filter(element => 
+                    element % 2 === 0
+                )
+                .map(element => 
+                    element * 3
+                )
+                .reduce((accum,element) => 
+                    accum + element
+                ,0)
+        }
+
+        let exampleArray = [3, 5, 2, 8, 10, 7];
+        alert(sumOfTripledEvens(exampleArray));
+    </script>    
+</body>
+</html>
