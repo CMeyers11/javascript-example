@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id = "user-entry" type="text">
+    <button id="submit">Submit</button>
+    <p id="output"></p>
+    <script>
+    // I misinterpreted this as finding the maximum sum of all numbers in an array
+    // What the prompt was really asking for was the maximum sum of a contiguous subarray within the array
+    // The code below solves the former, but in writing I will attempt to pseudocode the latter
+    /*  - Save both the current maximum and the partial sum of the current subarray
+        - While iterating in order, as long as the partial sum is positive, it should continue to be used as 
+        the base for the next subarray to which the next item is added
+        - If the partial sum becomes negative, start a new subarray / new partial sum at the next positive value
+        - If the partial sum becomes greater than the max, overwrite the max as the value of the partial
+
+        NEXT STEP - The above (we'll call the function "maxSubValue") should return the value of the max subarray, 
+        but how do we return the subarray itself (we'll call the function MaxSubElement)?
+        i.e. let arr = [1, -10, 5, 7]
+        i.e., maxSubValue(arr) => 12
+        i.e., maxSubElement(arr) => [5, 7]
+
+
+        Pseudocode:
+        - Define partialStart and maxStart as the first item in the array
+        - Define partialEnd and maxEnd as the current item in the array
+        - partialEnd will ALWAYS be the current item being indexed 
+        - If the partialSum goes below 0, reset the partialStart as the next element to be indexed, but keep maxStart where it is
+        - If partialSum goes above maxSum, reset maxStart to partialStart and reset maxEnd to partialEnd (i.e. the current item being indexed)
+
+      Now I am going to try this in another file within this folder 
+
+    */
+        const outputText = document.querySelector("#output");
+        const inputArray = document.querySelector("#user-entry");
+        const submitButton = document.querySelector("#submit");
+
+        submitButton.addEventListener("click", () => {
+            const convertedInputArray = inputArray.value.split(",").map(Number);
+            outputText.textContent = getMaxSub(convertedInputArray);
+        })
+
+        function getMaxSub(array) {
+            let maxSum = 0;
+            let partialSum = 0;
+            let partialStart = 0;
+            let maxStart = 0;
+            let partialEnd = 0;
+            let maxEnd = 0;
+            //[-1, 2, 3, -9]) ); // 5
+            for (let [index, element] of array.entries()) {
+                partialSum += element;
+                if (partialSum > maxSum) {
+                    maxSum = partialSum;
+                    maxEnd = index;
+                    maxStart = partialStart;
+                }
+                if (partialSum < 0) {
+                    partialSum = 0;
+                    partialStart = index + 1;
+                }
+            }
+            return 
+            alert(array.slice(maxStart,maxEnd));
+            alert(maxSum);
+        }
+       
+    </script>
+</body>
+</html>
