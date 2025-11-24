@@ -42,7 +42,8 @@
 
         submitButton.addEventListener("click", () => {
             const convertedInputArray = inputArray.value.split(",").map(Number);
-            outputText.textContent = getMaxSub(convertedInputArray);
+            const result = getMaxSub(convertedInputArray);
+            outputText.textContent = `Max sum ${result.maxSum}; Subarray ${result.maxSubArray}`;
         })
 
         function getMaxSub(array) {
@@ -65,9 +66,8 @@
                     partialStart = index + 1;
                 }
             }
-            return 
-            alert(array.slice(maxStart,maxEnd));
-            alert(maxSum);
+            let maxSubArray = array.slice(maxStart,maxEnd + 1);
+            return {maxSum,maxSubArray};
         }
        
     </script>
